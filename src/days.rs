@@ -25,6 +25,18 @@ impl DayOfWeek {
             Sunday(alt) => if *alt { "Là na Sàbaid" } else { "Didòmhnaich" }
         }
     }
+
+    pub fn scottish_gaelic_abbreviation(&self) -> &str {
+        match self {
+            Monday => "DiL",
+            Tuesday => "DiM",
+            Wednesday => "DiC",
+            Thursday => "Dia",
+            Friday => "Dih",
+            Saturday => "DiS",
+            Sunday(_) => "DiD"
+        }
+    }
 }
 
 impl From<u8> for DayOfWeek {
