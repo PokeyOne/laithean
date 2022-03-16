@@ -9,7 +9,7 @@ fn main() {
     for m in MONTHS {
         for d in 0..(m.day_count(year)) {
             let date = Date::new(year, m, d);
-            println!("{date}");
+            println!("{date} <- {}", date.english(None));
         }
     }
 }

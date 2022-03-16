@@ -41,7 +41,7 @@ impl Date {
         todo!()
     }
 
-    pub fn scottish_gaelic(&self, _format: &str) -> String {
+    pub fn scottish_gaelic(&self, _format: Option<&str>) -> String {
         // TODO: Accept a format string for customization
 
         format!(
@@ -49,6 +49,16 @@ impl Date {
             self.day_of_week().scottish_gaelic(),
             self.day_of_month_index + 1,
             self.month.scottish_gaelic(),
+            self.year
+        )
+    }
+
+    pub fn english(&self, _format: Option<&str>) -> String {
+        format!(
+            "{} {} {} {}",
+            self.day_of_week().english(),
+            self.day_of_month_index + 1,
+            self.month.english(),
             self.year
         )
     }
@@ -117,7 +127,7 @@ impl Date {
 
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f, "{}", self.scottish_gaelic(""))?;
+        write!(f, "{}", self.scottish_gaelic(None))?;
         Ok(())
     }
 }

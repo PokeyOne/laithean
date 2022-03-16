@@ -94,6 +94,30 @@ impl Month {
         }
     }
 
+    /// Get the name of the month in English.
+    ///
+    /// # Examples
+    /// ```
+    /// # use laithean::month::Month;
+    /// assert_eq!("January", Month::January.english());
+    /// ```
+    pub fn english(&self) -> &str {
+        match self {
+            January => "January",
+            February => "February",
+            March => "March",
+            April => "April",
+            May => "May",
+            June => "June",
+            July => "July",
+            August => "August",
+            September => "September",
+            October => "October",
+            November => "November",
+            December => "December"
+        }
+    }
+
     pub fn day_count(&self, year: u32) -> u8 {
         match self {
             January => 31,

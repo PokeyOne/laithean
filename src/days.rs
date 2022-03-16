@@ -38,6 +38,30 @@ impl DayOfWeek {
         }
     }
 
+    pub fn english(&self) -> &str {
+        match self {
+            Monday => "Monday",
+            Tuesday => "Tuesday",
+            Wednesday => "Wednesday",
+            Thursday => "Thursday",
+            Friday => "Friday",
+            Saturday => "Saturday",
+            Sunday(_alt) => "Sunday"
+        }
+    }
+
+    pub fn english_abbreviation(&self) -> &str {
+        match self {
+            Monday => "Mon",
+            Tuesday => "Tue",
+            Wednesday => "Wed",
+            Thursday => "Thu",
+            Friday => "Fri",
+            Saturday => "Sat",
+            Sunday(_alt) => "Sun"
+        }
+    }
+
     pub fn offset_by(&self, offset: i64) -> DayOfWeek {
         // Clamp the offset to [-6, 6] by wrapping
         let mut remainder = offset % 7;
