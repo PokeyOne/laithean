@@ -1,3 +1,5 @@
+use crate::year::Year;
+
 pub enum Month {
     January,
     February,
@@ -73,6 +75,23 @@ impl Month {
             October => if cap { "An Dàmhair" } else { "an Dàmhair" },
             November => if cap { "An t-Samhain" } else { "an t-Samhain" },
             December => if cap { "An Dùbhlachd" } else { "an Dùbhlachd" },
+        }
+    }
+
+    pub fn day_count(&self, year: u32) -> u64 {
+        match self {
+            January => 31,
+            February => if year.is_leap_year() { 29 } else { 28 },
+            March => 31,
+            April => 30,
+            May => 31,
+            June => 30,
+            July => 31,
+            August => 31,
+            September => 30,
+            October => 31,
+            November => 30,
+            December => 31
         }
     }
 }

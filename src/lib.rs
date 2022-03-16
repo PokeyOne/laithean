@@ -7,16 +7,18 @@
 //! That being said, as much of the documentation as possible will be in both
 //! languages.
 
+pub mod year;
 pub mod month;
 pub mod days;
 
 use month::Month;
 use days::DayOfWeek;
+use year::Year;
 
 const DAY_OF_WEEK_MAR_15_2022: DayOfWeek = DayOfWeek::Tuesday;
 
 pub struct Date {
-    year: u64,
+    year: u32,
     month: Month,
     day_of_month: u8
 }
@@ -38,11 +40,7 @@ impl Date {
         todo!()
     }
 
-    /// A unique integer representation of the date relative to March 15, 2022.
-    ///
-    /// This date was chosen because the function was written on this date, and
-    /// the day of the week was known.
-    fn day_of_ref(&self) -> i64 {
+    pub fn unique_value(&self) -> u64 {
         todo!()
     }
 }
