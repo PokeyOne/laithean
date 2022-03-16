@@ -1,5 +1,20 @@
 use crate::year::Year;
 
+pub const MONTHS: [Month; 12] = [
+    January,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+];
+
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Month {
     January,
@@ -79,7 +94,7 @@ impl Month {
         }
     }
 
-    pub fn day_count(&self, year: u32) -> u64 {
+    pub fn day_count(&self, year: u32) -> u8 {
         match self {
             January => 31,
             February => if year.is_leap_year() { 29 } else { 28 },

@@ -32,7 +32,7 @@ pub struct Date {
 
 impl Date {
     pub fn new(year: u32, month: Month, day_of_month_index: u8) -> Date {
-        assert!((day_of_month_index as u64) < month.day_count(year));
+        assert!(day_of_month_index < month.day_count(year));
 
         Date { year, month, day_of_month_index }
     }
@@ -112,5 +112,12 @@ impl Date {
     /// ```
     pub fn day_index_in_year(&self) -> u32 {
         self.year.month_index(self.month) + (self.day_of_month_index as u32)
+    }
+}
+
+impl std::fmt::Display for Date {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        write!(f, "{}", self.scottish_gaelic(""))?;
+        Ok(())
     }
 }

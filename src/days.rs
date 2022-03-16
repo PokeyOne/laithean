@@ -39,17 +39,13 @@ impl DayOfWeek {
     }
 
     pub fn offset_by(&self, offset: i64) -> DayOfWeek {
-        println!("Offseting {self:?} by {offset}");
-
         // Clamp the offset to [-6, 6] by wrapping
         let mut remainder = offset % 7;
-        println!("Clamped remainder: {remainder}");
 
         // Make the offset positive.
         if remainder < 0 {
             remainder += 7;
         }
-        println!("Non-negative clamp: {remainder}");
 
         // Double check, but these should never be tripped, so only in debug
         debug_assert!(remainder >= 0);
