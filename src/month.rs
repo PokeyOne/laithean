@@ -1,5 +1,6 @@
 use crate::year::Year;
 
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Month {
     January,
     February,
@@ -92,6 +93,53 @@ impl Month {
             October => 31,
             November => 30,
             December => 31
+        }
+    }
+
+    pub fn after(&self, other: &Month) -> bool {
+        (*self as u8) > (*other as u8)
+    }
+
+    pub fn before(&self, other: &Month) -> bool {
+        other.after(self)
+    }
+}
+
+impl From<Month> for u8 {
+    fn from(item: Month) -> u8 {
+        match item {
+            January => 0,
+            February => 1,
+            March => 2,
+            April => 3,
+            May => 4,
+            June => 5,
+            July => 6,
+            August => 7,
+            September => 8,
+            October => 9,
+            November => 10,
+            December => 11
+        }
+    }
+}
+
+impl From<u8> for Month {
+    fn from(item: u8) -> Month {
+        match item {
+            0 => January,
+            1 => February,
+            2 => March,
+            3 => April,
+            4 => May,
+            5 => June,
+            6 => July,
+            7 => August,
+            8 => September,
+            9 => October,
+            10 => November,
+            11 => December,
+            _ => Month::from(item % 12)
         }
     }
 }

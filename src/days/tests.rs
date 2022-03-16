@@ -19,3 +19,18 @@ fn test_from_into_reversible() {
     // Test
     assert_eq!(numbers, result_numbers);
 }
+
+#[test]
+fn test_offset_zero() {
+    assert_eq!(Monday, Monday.offset_by(0));
+}
+
+#[test]
+fn test_offset_one_no_wrap() {
+    assert_eq!(Tuesday, Monday.offset_by(1));
+}
+
+#[test]
+fn test_offset_one_with_wrap() {
+    assert_eq!(Monday, Sunday(false).offset_by(1));
+}
